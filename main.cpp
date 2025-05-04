@@ -18,6 +18,21 @@ bool isPrime(int n) {
     return true;
 }
 
+// Удаляет из вектора каждый k-й элемент
+void removeEveryK(std::vector<int>& data, size_t k) {
+    if (k == 0) {
+        return;
+    }
+    size_t idx = 1;
+    auto it = std::remove_if(
+        data.begin(), data.end(),
+        [&](int) {
+            return (idx++ % k) == 0;
+        }
+    );
+    data.erase(it, data.end());
+}
+
 void task1() {
     std::cout << "\n--- Task 1: замена простых чисел на x ---\n";
 
@@ -74,16 +89,7 @@ void task2() {
     std::cin >> k;
 
     // 4) удаляем каждый k-й элемент
-    if (k > 0) {
-        size_t idx = 1;
-        auto it = std::remove_if(
-            data.begin(), data.end(),
-            [&](int){
-                return (idx++ % k) == 0;
-            }
-        );
-        data.erase(it, data.end());
-    }
+    removeEveryK(data, k);
 
     // 5) выводим результат
     std::cout << "Результат: ";
