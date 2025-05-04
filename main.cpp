@@ -72,6 +72,25 @@ void task2() {
     std::cout << "Введите k (каждый k-й элемент будет удалён): ";
     size_t k;
     std::cin >> k;
+
+    // 4) удаляем каждый k-й элемент
+    if (k > 0) {
+        size_t idx = 1;
+        auto it = std::remove_if(
+            data.begin(), data.end(),
+            [&](int){
+                return (idx++ % k) == 0;
+            }
+        );
+        data.erase(it, data.end());
+    }
+
+    // 5) выводим результат
+    std::cout << "Результат: ";
+    for (size_t i = 0; i < data.size(); ++i) {
+        std::cout << data[i] << " ";
+    }
+    std::cout << "\n";
 }
 
 int main() {
