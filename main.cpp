@@ -19,7 +19,18 @@ bool isPrime(int n) {
 }
 
 void task1() {
+    // 1) пусть у нас уже есть вектор data и число x
+    std::vector<int> data = { /* ... */ };
+    int x = {/* ... */};
 
+    // 2) заменяем все простые числа на x
+    std::replace_if(
+        data.begin(), data.end(),
+        [](int v){ return isPrime(v); },
+        x
+    );
+
+    // 3) далее будем выводить результат
 }
 
 void task2() {
