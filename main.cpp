@@ -67,6 +67,11 @@ void task2() {
     for (size_t i = 0; i < n; ++i) {
         std::cin >> data[i];
     }
+
+    // 3) вводим k
+    std::cout << "Введите k (каждый k-й элемент будет удалён): ";
+    size_t k;
+    std::cin >> k;
 }
 
 int main() {
