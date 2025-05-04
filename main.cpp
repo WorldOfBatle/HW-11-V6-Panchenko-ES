@@ -19,18 +19,38 @@ bool isPrime(int n) {
 }
 
 void task1() {
-    // 1) пусть у нас уже есть вектор data и число x
-    std::vector<int> data = { /* ... */ };
-    int x = {/* ... */};
+    std::cout << "\n--- Task 1: замена простых чисел на x ---\n";
 
-    // 2) заменяем все простые числа на x
+    // 1) вводим размер последовательности
+    std::cout << "Введите количество элементов: ";
+    size_t n;
+    std::cin >> n;
+
+    // 2) читаем саму последовательность
+    std::vector<int> data(n);
+    std::cout << "Введите " << n << " целых чисел через пробел:\n";
+    for (size_t i = 0; i < n; ++i) {
+        std::cin >> data[i];
+    }
+
+    // 3) читаем значение x
+    std::cout << "Введите значение x: ";
+    int x;
+    std::cin >> x;
+
+    // 4) заменяем все простые числа на x
     std::replace_if(
         data.begin(), data.end(),
         [](int v){ return isPrime(v); },
         x
     );
 
-    // 3) далее будем выводить результат
+    // 5) выводим результат
+    std::cout << "Результат: ";
+    for (int v : data) {
+        std::cout << v << " ";
+    }
+    std::cout << "\n";
 }
 
 void task2() {
