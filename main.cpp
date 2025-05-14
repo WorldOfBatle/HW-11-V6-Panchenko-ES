@@ -4,11 +4,10 @@
 #include <algorithm>
 
 // Проверяет, является ли n простым (n > 1)
-bool isPrime(int n) {
+auto isPrime = [](int n) {
     if (n < 2) {
         return false;
     }
-    // пробуем делители от 2 до sqrt(n)
     int lim = static_cast<int>(std::sqrt(n));
     for (int d = 2; d <= lim; ++d) {
         if (n % d == 0) {
@@ -16,7 +15,7 @@ bool isPrime(int n) {
         }
     }
     return true;
-}
+};
 
 // Удаляет из вектора каждый k-й элемент
 void removeEveryK(std::vector<int>& data, size_t k) {
@@ -37,7 +36,7 @@ void task1() {
     std::cout << "\n--- Task 1: замена простых чисел на x ---\n";
 
     // 1) вводим размер последовательности
-    std::cout << "Введите количество элементов: ";
+    std::cout << "Введите количество элементов:\n";
     size_t n;
     std::cin >> n;
 
@@ -49,14 +48,14 @@ void task1() {
     }
 
     // 3) читаем значение x
-    std::cout << "Введите значение x: ";
+    std::cout << "Введите значение x:\n";
     int x;
     std::cin >> x;
 
     // 4) заменяем все простые числа на x
     std::replace_if(
         data.begin(), data.end(),
-        [](int v){ return isPrime(v); },
+        isPrime,
         x
     );
 
@@ -72,7 +71,7 @@ void task2() {
     std::cout << "\n--- Task 2: удаление каждого k-го элемента ---\n";
 
     // 1) вводим количество элементов
-    std::cout << "Введите количество элементов: ";
+    std::cout << "Введите количество элементов:\n";
     size_t n;
     std::cin >> n;
 
